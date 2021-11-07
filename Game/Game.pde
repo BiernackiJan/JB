@@ -2,6 +2,7 @@ PImage grassBlock;
 PImage background1;
 PImage background2;
 PImage hero;
+PImage heroR;
 int heroX = 700;
 int heroY = 450;
 
@@ -12,14 +13,19 @@ void setup() {
   background1 = loadImage("background1.png");
   background2 = loadImage("background2.png");
   hero = loadImage("hero.png");
+  heroR = loadImage("heroReverse.png");
+  frameRate(100);
+  
 }
 
 void draw() {
+  
   drawGrass();
   background1();
-  hero();
+  wasd();
   background2();
-  w();
+ 
+  
   
 }
 
@@ -35,18 +41,43 @@ void drawGrass(){
   for(int j = 0; j<= 1800; j+=15){ //draw grass blocks
   for(int i = 0; i<= 900; i+=15){
     image(grassBlock, -4 + j , -1 +i);
-    }
+  }
   }
 }
 
-void hero(){
-  image(hero,heroX,heroY,96/3,110/3,0,0,32/2,32/2);
-}
 
-void w(){
+
+void wasd(){
   if(keyPressed){
     if(key == 'w' || key == 'W'){
-      heroY -= 5;
+      if(heroY >= 80){
+        heroY -= 7;
+        image(hero,heroX,heroY,96/3,110/3,17,17,32,32);
+      }
+    }
+
+     if(key == 'a' || key == 'A'){
+      if(heroX >= 80){
+        heroX -= 7;
+        image(hero,heroX,heroY,96/3,110/3,0,0,17,17);
+      }
+    }
+
+    if(key == 's' || key == 'S'){
+      if(heroY <= 820){
+        heroY += 7;
+        image(hero, heroX,heroY,96/3+3,110/3,17,64/2,34,47);
+      }
+    }
+
+    if(key == 'd' || key == 'D'){
+      if(heroX <= 1720){
+        heroX += 7;
+        image(heroR,heroX,heroY,96/3,110/3,0,0,17,17);
       }
     }
   }
+  if(!keyPressed){
+    image(hero, heroX,heroY,96/3+3,110/3,17,64/2,34,47);
+  }
+}
