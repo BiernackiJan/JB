@@ -18,6 +18,9 @@ int button1Y = 315;
 int button2X = 750;
 int button2Y = 500;
 
+int button3X = 750;
+int button3Y = 315;
+
 boolean forestL = true;
 boolean forestR = false;
 boolean startGame = false;
@@ -25,6 +28,7 @@ boolean controlsMenu = false;
 boolean startMenu = true;
 boolean gameOn = false;
 boolean pauseMenu = false;
+boolean preGame = true;
 
 
 void setup() {
@@ -41,11 +45,20 @@ void setup() {
 }
 
 void draw() {
-  if(startMenu == true){
-    startBackground();
-    startPannel();
-    button1();
-    button2();
+  if(preGame == true){
+    if(startMenu == true){
+      startBackground();
+      startPannel();
+      button1();
+      button2();
+    }
+  
+    if(controlsMenu == true){
+      startBackground();
+      startPannel();
+      button3();
+      controls();
+   }
   }
   
   if(startGame == true){
@@ -154,6 +167,7 @@ void button1(){
           rect(button1X +5,button1Y+5,345,125);
           if(mousePressed){
             startGame = true;
+            preGame = false;
           }
         }
       }
@@ -178,6 +192,7 @@ void button2(){
           rect(button2X +5,button2Y+5,345,125);
           if(mousePressed){
             controlsMenu = true;
+            startMenu = false;
           }
         }
       }
@@ -187,6 +202,31 @@ void button2(){
   text("Controls",button2X + 70,button2Y + 85);
 }
   
+void button3(){
+  noStroke();
+  fill(230,240,255);
+  rect(button3X,button3Y,350,130);
+  fill(0);
+  textSize(50);
+  
+  if(mouseX >= button3X){
+    if(mouseX <= button3X + 350){
+      if(mouseY >= button3Y){
+        if(mouseY <= button3Y+130){
+          fill(255,170,0,60);
+          rect(button3X +5,button3Y+5,345,125);
+          if(mousePressed){
+            startMenu = true;
+            controlsMenu = false;
+          }
+        }
+      }
+    }
+  }
+  fill(0);
+  text("Start Menu",800,400);
+}
+
 void startBackground(){
   if(forestX >= 0){
     forestL = true;
@@ -208,4 +248,13 @@ void startBackground(){
     
     image(forest,forestX,0,384*3,320*3);
     image(forest,forestX+(384*3),0,384*3,320*3);
+}
+
+void controls(){
+  fill(255,200,0);
+  textSize(30);
+  text("w = walk up", 830,490);
+  text("a = walk left", 830,540);
+  text("s = walk down",830,590);
+  text("d = walk right",830,640);
 }
