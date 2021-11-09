@@ -3,10 +3,16 @@ PImage background1;
 PImage background2;
 PImage hero;
 PImage heroR;
+PImage singleTreeD;
+
 float heroX = 900;
 float heroY = 450;
 float backgroundX = -1100;
 float backgroundY = -450;
+
+boolean startMenu = true;
+boolean gameOn = false;
+boolean pauseMenu = false;
 
 
 void setup() {
@@ -16,6 +22,7 @@ void setup() {
   background2 = loadImage("background2.png");
   hero = loadImage("hero.png");
   heroR = loadImage("heroReverse.png");
+  singleTreeD = loadImage("singleTreeD.png");
   frameRate(600);
   
 }
