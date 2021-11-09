@@ -1,5 +1,3 @@
-PImage singleTreeD;
-PImage singleTreeE;
 PImage forest;
 
 float forestX = 0;
@@ -13,11 +11,10 @@ int button2Y = 500;
 boolean forestL = true;
 boolean forestR = false;
 boolean startGame = false;
+boolean controlsMenu = false;
 
 void setup(){
   size(1800,900);
-  singleTreeD = loadImage("singleTreeD.png");
-  singleTreeE = loadImage("singleTreeE.png");
   forest = loadImage("forest.png");
 }
 
@@ -71,7 +68,7 @@ void button2(){
           fill(255,170,0,60);
           rect(button2X +5,button2Y+5,345,125);
           if(mousePressed){
-            startGame = true;
+            controlsMenu = true;
           }
         }
       }
