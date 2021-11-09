@@ -5,6 +5,7 @@ PImage hero;
 PImage heroR;
 PImage singleTreeD;
 PImage forest;
+PImage trees;
 
 float forestX = 0;
 float heroX = 900;
@@ -40,6 +41,7 @@ void setup() {
   heroR = loadImage("heroReverse.png");
   singleTreeD = loadImage("singleTreeD.png");
   forest = loadImage("forest.png");
+  trees = loadImage("trees.png");
   frameRate(600);
   
 }
@@ -66,6 +68,7 @@ void draw() {
     background1();
     background2();
     wasd();  
+    //trees();
   }
   
 }
@@ -76,6 +79,10 @@ void background1(){
 
 void background2(){
    image(background2,backgroundX,backgroundY,1800 + 1800,900+900);
+}
+
+void trees(){
+  image(trees, backgroundX +500,backgroundY +250);
 }
 
 void drawGrass(){
@@ -96,7 +103,7 @@ void wasd(){
       }
       if(backgroundY < -10){
         backgroundY += 20;
-        image(hero,heroX,heroY,32+32,110/3+32,17,17,32,32);
+        image(hero,heroX,heroY,32+32,110/3+32,17,16,32,32);
       }
       else{
         image(hero,heroX,heroY,32+32,110/3+32,17,17,32,32);
@@ -106,7 +113,12 @@ void wasd(){
      
      
      if(key == 'a' || key == 'A'){
-      if(backgroundX < -10){
+      if(backgroundX >= -10){
+        if(heroX >= 180){
+          heroX -=20;
+        }
+      }
+       if(backgroundX < -10){
         backgroundX += 20;
         image(hero,heroX,heroY,32+32,((110/3)+((110/3)))+5,0,0,17,17);
       }
@@ -115,9 +127,10 @@ void wasd(){
       }
      }
 
+
     if(key == 's' || key == 'S'){
       if(backgroundY <= -890){
-        if(heroY <= 780){
+        if(heroY <= 640){
           heroY +=20;
         }
       }
@@ -133,6 +146,11 @@ void wasd(){
     
     
     if(key == 'd' || key == 'D'){
+      if(backgroundX <= -1790){
+        if(heroX <= 1600){
+          heroX += 20;
+        }
+      }
       if(backgroundX > -1790){
         backgroundX -= 20;
         image(heroR,heroX,heroY,32 + 32,(110/3+((110/3)))+5,0,0,17,17);
