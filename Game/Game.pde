@@ -12,6 +12,7 @@ float heroX = 900;
 float heroY = 450;
 float backgroundX = -1100/2;
 float backgroundY = -450/2;
+float speed = 15;
 
 int button1X = 750;
 int button1Y = 315;
@@ -43,7 +44,7 @@ void setup() {
   heroR = loadImage("heroReverse.png");
   singleTreeD = loadImage("singleTreeD.png");
   forest = loadImage("forest.png");
-  frameRate(600);
+  frameRate(150);
 }
 
 void draw() {
@@ -94,7 +95,7 @@ void wasd() {
     if (key == 'w' || key == 'W') {
       if (backgroundY >= -10) {
         if (heroY >= 100) {
-          heroY -= 15;
+          heroY -= speed;
         }
       }
       if (heroY == 450) {
@@ -103,13 +104,13 @@ void wasd() {
       if (heroY != 450) {
         if (heroY >=160) {
           heroYCentre = false;  
-          heroY -= 15;
+          heroY -= speed;
         }
       }
       if (backgroundY < -10) {
         image(hero, heroX, heroY, 32+32/2, 110/3+32/2, 17, 16, 32, 32);
         if (heroYCentre == true) {
-          backgroundY += 15;
+          backgroundY += speed;
         }
       } else {
         image(hero, heroX, heroY, 32+32/2, 110/3+32/2, 17, 16, 32, 32);
@@ -122,7 +123,7 @@ void wasd() {
     if (key == 'a' || key == 'A') {
       if (backgroundX >= -10) {
         if (heroX >= 150) {
-          heroX -=15;
+          heroX -=speed;
         }
       }
       if (heroX == 900) {
@@ -131,15 +132,20 @@ void wasd() {
       if (heroX != 900) {
         if (heroX >= 180) {
           heroXCentre = false;
-          heroX -= 15;
+          heroX -= speed;
         }
       }
       if (backgroundX < -10) {
         image(hero, heroX, heroY, 32+32/2, 110/3+32/2, 0, 0, 17, 17);
         if (heroXCentre == true) {
-          backgroundX += 15;
+          backgroundX += speed;
         }
-      } else {
+      } 
+      else if (keyPressed){
+        image(hero, heroX, heroY, 32+32/2, 110/3+32/2, 0, 0, 17, 17);
+      }
+      
+      else {
         image(hero, heroX, heroY, 32+32/2, 110/3+32/2, 0, 0, 17, 17);
       }
     }
@@ -149,7 +155,7 @@ void wasd() {
     if (key == 's' || key == 'S') {
       if (backgroundY <= -890/2) {
         if (heroY <= 640 + 70) {
-          heroY +=15;
+          heroY += speed;
         }
       }
       if (heroY == 450) {
@@ -158,13 +164,13 @@ void wasd() {
       if (heroY != 450) {
         if (heroY <= 640 + 40) {
           heroYCentre = false;
-          heroY += 15;
+          heroY += speed;
         }
       }
       if (backgroundY > -890/2) {
         image(hero, heroX, heroY, 32+32/2, 110/3+32/2, 17, 32, 34, 47);
         if (heroYCentre == true) {
-          backgroundY -= 15;
+          backgroundY -= speed;
         }
       } else {
         image(hero, heroX, heroY, 32+32/2, 110/3+32/2, 17, 32, 34, 47);
@@ -176,7 +182,7 @@ void wasd() {
     if (key == 'd' || key == 'D') {
       if (backgroundX <= -1790/2) {
         if (heroX <= 1600) {
-          heroX += 15;
+          heroX += speed;
         }
       }
       if (heroX == 900) {
@@ -185,13 +191,13 @@ void wasd() {
       if (heroX != 900) {
         if (heroX <= 1600) {
           heroXCentre = false;
-          heroX += 15;
+          heroX += speed;
         }
       }
       if (backgroundX > -1790/2) {
         image(heroR, heroX, heroY, 32 + 32/2, 110/3+32/2, 0, 0, 17, 17);
         if (heroXCentre == true) {
-          backgroundX -= 15;
+          backgroundX -= speed;
         }
       } else {
         image(heroR, heroX, heroY, 32 + 32/2, 110/3+32/2, 0, 0, 17, 17);
