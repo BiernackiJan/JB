@@ -36,6 +36,7 @@ void setup(){
   size(1800, 900);                    
   setupDefault();
   enemy1 = loadImage("enemy1.png");
+  frameRate(150);
 }
 
 void draw(){
@@ -44,13 +45,11 @@ void draw(){
     image(enemy1,backgroundX +1050,backgroundY+500,48*1.5,48*1.5);
     background2();
     wasd();
-  
+    //mobDeath(backgroundX +1050,backgroundY+500);
 }
 
 
-
-
-void mobDeath(int mobXPos, int mobYPos){
+void mobDeath(float mobXPos, float mobYPos){
   
   images[0]  = loadImage("01.png");
   images[1]  = loadImage("01.png");
