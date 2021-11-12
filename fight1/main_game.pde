@@ -35,6 +35,7 @@ void drawGrass() {
 }
 
 void wasd() {
+  if(gameOn == true){
   if (keyPressed) {
 
 
@@ -152,5 +153,6 @@ void wasd() {
   }
   if (!keyPressed) {
     image(hero, heroX, heroY, 32+32/2, 110/3+32/2, 17, 32, 34, 47);
+  }
   }
 }
