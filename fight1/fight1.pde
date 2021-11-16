@@ -79,8 +79,10 @@ void encounter1(float mobX1, float mobY1) {
 }
 
 void fight1(){
+  
   if(fight1 == true){
     background(50);
+    rect(
     if(mousePressed){
       gameOn = true;
       fight1 = false;
